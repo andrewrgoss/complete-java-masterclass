@@ -17,38 +17,31 @@ public class Main {
         // confirm your code is working.
         // Add some System.out.println's in the two methods above as well.
 
-        BankAcct bankAcct = new BankAcct();
+        Account andrewsAccount = new Account("LL-191-919", 1986.19, "Andrew", "happy@gmail.com", "555-599-9944");
+
+        // ** replaced by constructor above
+//        account.setNumber("LL-191-919");
+//        account.setBalance(1986.19);
+//        account.setCustomerName("Andrew");
+//        account.setCustomerEmail("happy@gmail.com");
+//        account.setCustomerPhone(validatePhone("555-599-9944"));
+
+        System.out.println("\nBank account number.............................. " + andrewsAccount.getNumber());
+        System.out.println("Bank account balance............................. " + andrewsAccount.getBalance());
+        System.out.println("Bank account full name........................... " + andrewsAccount.getCustomerName());
+        System.out.println("Bank account email............................... " + andrewsAccount.getCustomerEmail());
+        System.out.println("Bank account phone number........................ " + andrewsAccount.getCustomerPhone());
 
         Scanner sc = new Scanner(System.in);
-
-        System.out.println("Please enter bank account number: ");
-        while (!sc.hasNextInt()) {
-            System.out.println("Please enter a valid integer value.");
-            sc.next();
-        }
-        int acctNumber = sc.nextInt();
-        bankAcct.setAcctNumber(acctNumber);
-        System.out.println("\nBank account number.............................. " + bankAcct.getAcctNumber());
-
-        bankAcct.setAcctBalance(1986.19);
-        bankAcct.setAcctFullName("Andrew");
-        bankAcct.setAcctEmail("happy@gmail.com");
-        bankAcct.setAcctPhone(validatePhone("555-599-9944"));
-
-        System.out.println("Bank account balance............................. " + bankAcct.getAcctBalance());
-        System.out.println("Bank account full name........................... " + bankAcct.getAcctFullName());
-        System.out.println("Bank account email............................... " + bankAcct.getAcctEmail());
-        System.out.println("Bank account phone number........................ " + bankAcct.getAcctPhone());
-
         System.out.println("\nPlease enter deposit amount: ");
         while (!sc.hasNextDouble()) {
             System.out.println("Please enter a valid double value.");
             sc.next();
         }
         double depositAmt = sc.nextDouble();
-        bankAcct.makeDeposit(depositAmt);
+        andrewsAccount.deposit(depositAmt);
 
-        System.out.println("\nNEW bank account balance......................... " + bankAcct.getAcctBalance());
+        System.out.println("\nNEW bank account balance......................... " + andrewsAccount.getBalance());
 
         System.out.println("\nPlease enter withdrawal amount: ");
         while (!sc.hasNextDouble()) {
@@ -56,19 +49,36 @@ public class Main {
             sc.next();
         }
         double withdrawalAmt = sc.nextDouble();
-        bankAcct.makeWithdrawal(withdrawalAmt);
+        andrewsAccount.withdrawal(withdrawalAmt);
 
-        System.out.println("\nNEW bank account balance......................... " + bankAcct.getAcctBalance());
+        System.out.println("\nNEW bank account balance......................... " + andrewsAccount.getBalance());
 
         sc.close();
-    }
 
-    public static String validatePhone(String s) {
-        String regexStr = "^[0-9\\-]*$";
-        if (s.matches(regexStr)) {
-            return s;
-        }
-        return "{Invalid phone number!}";
-    }
+        System.out.println("==================================================  ");
 
+        Account timsAccount = new Account("Tim", "tim@email.com", "12345");
+        System.out.println(timsAccount.getNumber() + " name " + timsAccount.getCustomerName());
+
+        System.out.println("==================================================  ");
+
+        // Create a new class VipCustomer
+        // it should have 3 fields name, credit limit, and email address.
+        // create 3 constructors
+        // 1st constructor empty should call the constructor with 3 parameters with default values
+        // 2nd constructor should pass on the 2 values it receives and add a default value for the 3rd
+        // 3rd constructor should save all fields.
+        // create getters only for this using code generation of intellij as setters wont be needed
+        // test and confirm it works.
+
+        VipCustomer defaultAccount = new VipCustomer();
+        System.out.println("Name: " + defaultAccount.getName() + " | " + "Credit Limit: " + defaultAccount.getCreditLimit() + " | " + "Email Address: " + defaultAccount.getEmailAddress());
+
+        VipCustomer philsAccount = new VipCustomer("Phil", 25000.00);
+        System.out.println("Name: " + philsAccount.getName() + " | " + "Credit Limit: " + philsAccount.getCreditLimit() + " | " + "Email Address: " + philsAccount.getEmailAddress());
+
+        VipCustomer davidsAccount = new VipCustomer("David",  10000.00, "david@email.com");
+        System.out.println("Name: " + davidsAccount.getName() + " | " + "Credit Limit: " + davidsAccount.getCreditLimit() + " | " + "Email Address: " + davidsAccount.getEmailAddress());
+
+    }
 }
