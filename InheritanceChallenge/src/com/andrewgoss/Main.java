@@ -13,8 +13,10 @@ public class Main {
         // As mentioned above, changing gears, increasing/decreasing speed should be included.
         // For you specific type of vehicle you will want to add something specific for that type of car.
 
-        Car car = new Car();
-        car.changeSpeed(90);
-
+        Camry camry = new Camry(36);
+        camry.steer(45);
+        camry.accelerate(30);
+        camry.accelerate(20);
+        camry.accelerate(-42);
     }
 }
