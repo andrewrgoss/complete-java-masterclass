@@ -1,34 +1,45 @@
 package com.andrewgoss;
 
 public class Printer {
-    private double tonerLevel;
-    private int numPagesToPrint;
-    private boolean duplexPrinter;
+    private int tonerLevel;
+    private int pagesPrinted;
+    private boolean duplex;
 
-    public Printer(double tonerLevel, int numPagesToPrint, boolean duplexPrinter) {
+    public Printer(int tonerLevel, boolean duplex) {
+        if(tonerLevel > -1 && tonerLevel <= 100) {
+            this.tonerLevel = tonerLevel;
+        } else {
+            this.tonerLevel = -1;
+        }
+
         this.tonerLevel = tonerLevel;
-        this.numPagesToPrint = numPagesToPrint;
-        this.duplexPrinter = duplexPrinter;
+        this.duplex = duplex;
+        this.pagesPrinted = 0;
     }
 
-    public void fillToner(double pctFill) {
-        System.out.println("Starting toner level: " + tonerLevel);
-        tonerLevel += pctFill;
-        if (tonerLevel < 100) {
-            System.out.println("New toner level: " + tonerLevel);
+    public int addToner(int tonerAmount) {
+        if(tonerLevel > 0 && tonerAmount <= 100) {
+            if(this.tonerLevel + tonerAmount > 100) {
+                return -1;
+            }
+            this.tonerLevel += tonerAmount;
+            return this.tonerLevel;
         } else {
-            System.out.println("Toner maximum level of 100% exceeded: " + tonerLevel);
+            return -1;
         }
-
     }
 
-    public void print() {
-        System.out.println("Printing " + numPagesToPrint + " page(s)...");
-        if (duplexPrinter) {
-            numPagesToPrint = (int) Math.ceil((double)numPagesToPrint / 2);
-        } else {
-            numPagesToPrint += 1;
+    public int printPages(int pages) {
+        int pagesToPrint = pages;
+        if(this.duplex) {
+            pagesToPrint /= 2;
+            System.out.println("Printing in duplex mode");
         }
-        System.out.println("Total number of pages printed: " + numPagesToPrint);
+        this.pagesPrinted += pagesToPrint;
+        return pagesToPrint;
+    }
+
+    public int getPagesPrinted() {
+        return pagesPrinted;
     }
 }
