@@ -17,61 +17,83 @@ class Car {
         return name;
     }
 
-//    public boolean isEngine() {
-//        return engine;
-//    }
-//
-//    public int getCylinders() {
-//        return cylinders;
-//    }
-//
-//    public int getWheels() {
-//        return wheels;
-//    }
+    public int getCylinders() {
+        return cylinders;
+    }
 
     public String startEngine() {
-        return "Car.startEngine() called";
+        return getClass().getSimpleName() + " -> startEngine()";
     }
 
     public String accelerate() {
-        return "Car.accelerate() called";
+        return getClass().getSimpleName() + " -> accelerate()";
     }
 
     public String brake() {
-        return "Car.brake() called";
+        return getClass().getSimpleName() + " -> brake()";
     }
 }
 
 class Camry extends Car {
-    public Camry() {
-        super("Camry", 4);
+    public Camry(String name, int cylinders) {
+        super(name, cylinders);
     }
 
     @Override
     public String startEngine() {
         return "Camry.startEngine() called";
     }
+
+    @Override
+    public String accelerate() {
+        return "Camry.accelerate() called";
+    }
+
+    @Override
+    public String brake() {
+        return "Camry.brake() called";
+    }
+}
+
+class Sentra extends Car {
+    public Sentra(String name, int cylinders) {
+        super(name, cylinders);
+    }
+
+    @Override
+    public String startEngine() {
+        return "Sentra.startEngine() called";
+    }
+
+    @Override
+    public String accelerate() {
+        return "Sentra.accelerate() called";
+    }
+
+    @Override
+    public String brake() {
+        return "Sentra.brake() called";
+    }
 }
 
 class Corolla extends Car {
-    public Corolla() {
-        super("Corolla", 4);
+    public Corolla(String name, int cylinders) {
+        super(name, cylinders);
     }
 
     @Override
     public String startEngine() {
         return "Corolla.startEngine() called";
     }
-}
 
-class Sentra extends Car {
-    public Sentra() {
-        super("Sentra", 4);
+    @Override
+    public String accelerate() {
+        return "Corolla.accelerate() called";
     }
 
     @Override
-    public String startEngine() {
-        return "Sentra.startEngine() called";
+    public String brake() {
+        return "Corolla.brake() called";
     }
 }
 
@@ -106,13 +128,13 @@ public class Main {
         System.out.println("Random number generated was: " + randomNumber);
         switch(randomNumber) {
             case 1:
-                return new Camry();
+                return new Camry("Camry", 4);
 
             case 2:
-                return new Corolla();
+                return new Corolla("Corolla", 4);
 
             case 3:
-                return new Sentra();
+                return new Sentra("Sentra", 4);
 
         }
 
