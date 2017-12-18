@@ -31,11 +31,13 @@ public class Main {
         // burger
         // For the two additional classes this may require you to be looking at the base class for pricing and then
         // adding totals onto that.
-        
+
         Hamburger hamburger = new Hamburger("White", "Standard");
         hamburger.displayMenu();
-        hamburger.addTopping(1,2,3,4);
-        hamburger.completeOrder();
+        hamburger.completeOrder(1,0,1,2);
+
+        HealthyBurger healthyBurger = new HealthyBurger("Brown rye", "Veggie", 1, 1);
+        healthyBurger.completeOrder(1, 1, 1, 0);
 
     }
 }
