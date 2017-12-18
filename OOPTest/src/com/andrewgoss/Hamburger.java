@@ -1,52 +1,73 @@
 package com.andrewgoss;
 
 public class Hamburger {
-    private String breadRollType;
+    private String name;
     private String meat;
+    private double price;
+    private String breadRollType;
 
-    private double totalPrice;
-    private double toppingsPrice;
-    private int toppingsAdded;
+    private String addition1Name;
+    private Double addition1Price;
 
-    public Hamburger(String breadRollType, String meat) {
-        this.breadRollType = breadRollType;
+    private String addition2Name;
+    private Double addition2Price;
+
+    private String addition3Name;
+    private Double addition3Price;
+
+    private String addition4Name;
+    private Double addition4Price;
+
+    public Hamburger(String name, String meat, double price, String breadRollType) {
+        this.name = name;
         this.meat = meat;
-        this.totalPrice = 4.0;
-        this.toppingsPrice = 0.0;
-        this.toppingsAdded = 0;
+        this.price = price;
+        this.breadRollType = breadRollType;
     }
 
-    public void displayMenu() {
-        System.out.println("WELCOME TO BOB'S BURGERS!\n");
-        System.out.println(":: STANDARD BURGER MENU ::");
-        System.out.println("AVAILABLE TOPPINGS");
-        System.out.println("1 : lettuce ..... 0.30");
-        System.out.println("2 : tomato ...... 0.60");
-        System.out.println("3 : onion ....... 0.50");
-        System.out.println("4 : cheese ...... 0.75\n");
-        System.out.println("Enter 1 to add topping, enter 0 to exclude topping.\n");
+    public void addHamburgerAddition1(String name, double price) {
+        this.addition1Name = name;
+        this.addition1Price = price;
     }
 
-    public void completeOrder(int lettuce, int tomato, int onion, int cheese) {
-        if (lettuce > 0) {
-            this.toppingsAdded += lettuce;
-            this.toppingsPrice += 0.30 * lettuce;
-        }
-        if (tomato > 0) {
-            this.toppingsAdded += tomato;
-            this.toppingsPrice += 0.60 * tomato;
-        }
-        if (onion > 0) {
-            this.toppingsAdded += onion;
-            this.toppingsPrice += 0.50 * onion;
-        }
-        if (cheese > 0) {
-            this.toppingsAdded += cheese;
-            this.toppingsPrice += 0.75 * cheese;
-        }
-        this.totalPrice += this.toppingsPrice;
-
-        System.out.println("Standard hamburger ordered. Added " + this.toppingsAdded + " toppings.");
-        System.out.println("Total price = " + this.totalPrice);
+    public void addHamburgerAddition2(String name, double price) {
+        this.addition2Name = name;
+        this.addition2Price = price;
     }
+
+    public void addHamburgerAddition3(String name, double price) {
+        this.addition3Name = name;
+        this.addition3Price = price;
+    }
+
+    public void addHamburgerAddition4(String name, double price) {
+        this.addition4Name = name;
+        this.addition4Price = price;
+    }
+
+    public double itemizeHamburger() {
+        double hamburgerPrice = this.price;
+        System.out.println(this.name + " hamburger on a " + this.breadRollType + " roll "
+            + "with " + this.meat + ", price is " + this.price);
+        if(this.addition1Name != null) {
+            hamburgerPrice += this.addition1Price;
+            System.out.println("Added " + this.addition1Name + " for an extra " + this.addition1Price);
+        }
+        if(this.addition2Name != null) {
+            hamburgerPrice += this.addition2Price;
+            System.out.println("Added " + this.addition2Name + " for an extra " + this.addition2Price);
+        }
+        if(this.addition3Name != null) {
+            hamburgerPrice += this.addition3Price;
+            System.out.println("Added " + this.addition3Name + " for an extra " + this.addition3Price);
+        }
+        if(this.addition4Name != null) {
+            hamburgerPrice += this.addition4Price;
+            System.out.println("Added " + this.addition4Name + " for an extra " + this.addition4Price);
+        }
+
+        return hamburgerPrice;
+    }
+
+
 }

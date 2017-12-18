@@ -32,12 +32,20 @@ public class Main {
         // For the two additional classes this may require you to be looking at the base class for pricing and then
         // adding totals onto that.
 
-        Hamburger hamburger = new Hamburger("White", "Standard");
-        hamburger.displayMenu();
-        hamburger.completeOrder(1,0,1,2);
+        Hamburger hamburger = new Hamburger("Basic", "Sausage", 4.0, "White");
+        double price = hamburger.itemizeHamburger();
+        hamburger.addHamburgerAddition1("Tomato", 0.60);
+        hamburger.addHamburgerAddition2("Lettuce", 0.30);
+        hamburger.addHamburgerAddition3("Cheese", 0.75);
+        System.out.println("Total burger price is " + hamburger.itemizeHamburger());
 
-        HealthyBurger healthyBurger = new HealthyBurger("Brown rye", "Veggie", 1, 1);
-        healthyBurger.completeOrder(1, 1, 1, 0);
+        HealthyBurger healthyBurger = new HealthyBurger("Veggies", 5.5);
+        healthyBurger.addHamburgerAddition1("Egg", 1.5);
+        healthyBurger.addHealthAddition1("Kale", 2.0);
+        healthyBurger.itemizeHamburger();
+        System.out.println("Total healthy burger price is " + healthyBurger.itemizeHamburger());
 
+        DeluxeBurger db = new DeluxeBurger();
+        db.itemizeHamburger();
     }
 }

@@ -1,17 +1,38 @@
 package com.andrewgoss;
 
 public class HealthyBurger extends Hamburger {
-    private int kale;
-    private int carrot;
+    private String healthyExtra1Name;
+    private double healthyExtra1Price;
 
-    public HealthyBurger(String breadRollType, String meat, int kale, int carrot) {
-        super(breadRollType, meat);
-        this.kale = kale;
-        this.carrot = carrot;
+    private String healthyExtra2Name;
+    private double healthyExtra2Price;
+
+    public HealthyBurger(String meat, double price) {
+        super("Healthy", meat, price, "Brown rye");
+    }
+
+    public void addHealthAddition1(String name, double price) {
+        this.healthyExtra1Name = name;
+        this.healthyExtra1Price = price;
+    }
+
+    public void addHealthAddition2(String name, double price) {
+        this.healthyExtra2Name = name;
+        this.healthyExtra2Price = price;
     }
 
     @Override
-    public void completeOrder(int lettuce, int tomato, int onion, int cheese) {
-        super.completeOrder(lettuce, tomato, onion, cheese);
+    public double itemizeHamburger() {
+        double hamburgerPrice = super.itemizeHamburger();
+        if(this.healthyExtra1Name != null) {
+            hamburgerPrice += this.healthyExtra1Price;
+            System.out.println("Added " + this.healthyExtra1Name + " for an extra " + this.healthyExtra1Price);
+        }
+        if(this.healthyExtra2Name != null) {
+            hamburgerPrice += this.healthyExtra2Price;
+            System.out.println("Added " + this.healthyExtra2Name + " for an extra " + this.healthyExtra2Price);
+        }
+
+        return hamburgerPrice;
     }
 }
